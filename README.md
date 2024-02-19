@@ -3,7 +3,11 @@
 
 ## TGO en Analisis y Desarrollo de Software
 
-Repositorio público
-Lorem ipsum dolor sit amet.
+| Temas        | Descripcion           | 
+| ------------- |:-------------:| 
+| 1. POO      | PHP Orientado a objetos | 
+| 2. PDO      | Objetos de Datos en php      |   
+| 3. MVC | modelo vista controlador en php      | 
+| 4. Laravel | Framework en php      | 
 
-**Lista de Temas**
+![hollow](http://tinyurl.com/yskyj8t2)
