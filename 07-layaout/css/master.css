@@ -34,11 +34,77 @@ main.welcome {
         display: flex;
         justify-content: center;
         align-self: center;
-        margin-block: 3rem;
+        margin-block: 1.8rem;
     }
-    section.slider{
-        display: flex;
-        flex-direction: column;
+    section.owl-carousel {
+        div.owl-item {
+            display: flex;
+            justify-content: center;
+            img {
+                width: 306px;
+                height: 306px;
+            }
+        }
+        div.owl-nav {
+            position: relative;
+            top: -180px;
+            display: flex;
+            justify-content: space-between;
+            button {
+                transition: transform 0.2s ease-in;
+                span {
+                    border: 2px solid var(--color-first);
+                    display: flex;
+                    height: 44px;
+                    width: 34px;
+                    text-indent: -9999px;
+                }
+                button:is(:hover) {
+                    background-color: transparent;
+                }
+                button.owl-prev {
+                    span {
+                        background: url(../images/btn-prev.svg) no-repeat center;
+                    }
+                }
+                button.owl-prev :hover {
+                    transform: scale(1.1) translateX(-4px);
+                }
+                button.owl-next {
+                    span {
+                        background: url(../images/btn-next.svg) no-repeat center;
+                    }
+                }
+                button.owl-next :hover {
+                    transform: scale(1.1) translateX(4px);
+                }
+            }
+        }
+        div.owl-dots {
+            position: relative;
+            border: 2px solid var(--color-first);
+            top: -46px;
+            button {
+                transition: transform 0.2s ease-in;
+            }
+            button:is(:hover) {
+                transform: scale(1.1);
+            }
+            button.owl-dot {
+                span {
+                    background-color: var(--color-second);
+                    height: 16px;
+                    width: 16px;
+                }
+            }
+            button.owl-dot.active, button.owl-dot:is(:hover) {
+                span{
+                    background-color: var(--color-first);
+                    height: 16px;
+                    width: 16px;
+                }                
+            }
+        }
     }
     footer {
         display: flex;
