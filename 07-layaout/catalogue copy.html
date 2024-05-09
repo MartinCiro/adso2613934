@@ -57,26 +57,26 @@
         </form>
         <article>
             <h2>
-                <img src="images/icon-category.svg" alt="Category">Casual
+                <img src="images/icon-category.svg" alt="Category">Category
             </h2>
             <div class="owl-carousel owl-theme">
                 <figure>
                     <img src="images/slide-c1-01.svg" alt="" class="slide">
-                    <figcaption>Candy Crush</figcaption>
+                    Title
                     <a href="view.html" class="btn-more">
                         <img src="images/ico-more.svg" alt="">view
                     </a>
                 </figure>
                 <figure>
                     <img src="images/slide-c1-02.svg" alt="" class="slide">
-                <figcaption>Pokemon Go</figcaption>
+                    Pokemon Go
                     <a href="" class="btn-more">
                         <img src="" alt="">view
                     </a>
                 </figure>
                 <figure>
                     <img src="images/slide-c1-03.svg" alt="" class="slide">
-                <figcaption>FIFA</figcaption>
+                    Title Game
                     <a href="" class="btn-more">
                         <img src="" alt="">view
                     </a>
@@ -85,26 +85,26 @@
         </article>
         <article>
             <h2>
-                <img src="images/icon-category.svg" alt="Category">Sport
+                <img src="images/icon-category.svg" alt="Category">Category
             </h2>
             <div class="owl-carousel owl-theme">
                 <figure>
                     <img src="images/slide-c2-01.svg" alt="" class="slide">
-                    <figcaption>Title Game</figcaption>
+                    Title Game
                     <a href="view.html" class="btn-more">
                         <img src="images/ico-more.svg" alt="">view
                     </a>
                 </figure>
                 <figure>
                     <img src="images/slide-c2-02.svg" alt="" class="slide">
-                    <figcaption>Title Game</figcaption>
+                    Title Game
                     <a href="" class="btn-more">
                         <img src="" alt="">view
                     </a>
                 </figure>
                 <figure>
                     <img src="images/slide-c2-03.svg" alt="" class="slide">
-                    <figcaption>Title Game</figcaption>
+                    Title Game
                     <a href="" class="btn-more">
                         <img src="" alt="">view
                     </a>
@@ -113,26 +113,26 @@
         </article>
         <article>
             <h2>
-                <img src="images/icon-category.svg" alt="Category">Animals
+                <img src="images/icon-category.svg" alt="Category">Category
             </h2>
             <div class="owl-carousel owl-theme">
                 <figure>
                     <img src="images/slide-c3-01.svg" alt="" class="slide">
-                    <figcaption>Title Game</figcaption>
+                    Title Game
                     <a href="view.html" class="btn-more">
                         <img src="images/ico-more.svg" alt="">view
                     </a>
                 </figure>
                 <figure>
                     <img src="images/slide-c3-02.svg" alt="" class="slide">
-                    <figcaption>Title Game</figcaption>
+                    Title Game
                     <a href="" class="btn-more">
                         <img src="" alt="">view
                     </a>
                 </figure>
                 <figure>
                     <img src="images/slide-c3-03.svg" alt="" class="slide">
-                    <figcaption>Title Game</figcaption>
+                    Title Game
                     <a href="" class="btn-more">
                         <img src="" alt="">view
                     </a>
@@ -149,12 +149,10 @@
                 loop: true,
                 margin: 10,
                 nav: true,
-                dots: false,
-                autoplay: true,
-                autoplayTimeout: 5000,
+                center: true,
                 responsive: {
                     0: {
-                        items: 2
+                        items: 1
                     }/* ,
                     600: {
                         items: 3
@@ -164,11 +162,11 @@
                     } */
                 }
             })
-            $('header').on('click', '.btn-burger', function () {
-                $(this).toggleClass('active')
-                $('.nav').toggleClass('active')
-            })
         })
+        $('header').on('click', '.btn-burger', function () {
+            $(this).toggleClass('active')
+            $('.nav').toggleClass('active')
+        });
     </script>
 </body>
 

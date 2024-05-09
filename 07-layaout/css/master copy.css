@@ -15,7 +15,7 @@
 /*----------------------------------------*/
 /* G E N E R A L */
 /*----------------------------------------*/
-body{
+body {
     background-color: var(--color-fourth);
     font-family: var(--ff-body);
     font-weight: 100;
@@ -23,7 +23,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 100vh;
+    min-height: 100vh;
     main {
         background-color: var(--color-second);
         height: 800px;
@@ -39,29 +39,29 @@ body{
                 user-select: none;
                 position: relative;
                 .line {
-                    fill:none;
-                    transition: stroke-dasharray 400ms, 
-                                stroke-dashoffset 400ms;
+                    fill: none;
+                    transition: stroke-dasharray 400ms,
+                        stroke-dashoffset 400ms;
                     stroke: var(--color-sixth);
                     stroke-width: 4;
                     stroke-linecap: round;
                 }
                 .top {
-                  stroke-dasharray: 40 121;
+                    stroke-dasharray: 40 121;
                 }
                 .bottom {
-                  stroke-dasharray: 40 121;
+                    stroke-dasharray: 40 121;
                 }
-              }
-              svg.btn-burger.active {
+            }
+            svg.btn-burger.active {
                 transform: rotate(45deg);
                 .top {
-                  stroke-dashoffset: -68px;
+                    stroke-dashoffset: -68px;
                 }
                 .bottom {
-                  stroke-dashoffset: -68px;
+                    stroke-dashoffset: -68px;
                 }
-              }
+            }
         }
         nav.nav {
             -webkit-backdrop-filter: blur(14px);
@@ -79,9 +79,6 @@ body{
             transition: transform 0.4s ease-in-out;
             z-index: 2;
             width: 400px;
-            img.title-menu {
-                margin-block: 2rem
-            }
         }
         nav.nav.active {
             opacity: 1;
@@ -146,61 +143,62 @@ main.welcome {
             button {
                 transition: transform 0.2s ease-in;
                 span {
-                    border: 2px solid var(--color-first);
                     display: flex;
                     height: 44px;
                     width: 34px;
                     text-indent: -9999px;
                 }
-                button:is(:hover) {
-                    background-color: transparent;
-                }
-                button.owl-prev {
-                    span {
-                        background: url(../images/btn-prev.svg) no-repeat center;
-                    }
-                }
-                button.owl-prev :hover {
-                    transform: scale(1.1) translateX(-4px);
-                }
-                button.owl-next {
-                    span {
-                        background: url(../images/btn-next.svg) no-repeat center;
-                    }
-                }
-                button.owl-next :hover {
-                    transform: scale(1.1) translateX(4px);
+            }
+            button:is(:hover) {
+                background-color: transparent;
+            }
+            button.owl-prev {
+                span {
+                    background: url(../images/btn-prev.svg) no-repeat center;
                 }
             }
+            button.owl-prev:hover {
+                transform: scale(1.1) translateX(-4px);
+            }
+            button.owl-next {
+                span {
+                    background: url(../images/btn-next.svg) no-repeat center;
+                }
+            }
+            button.owl-next:hover {
+                transform: scale(1.1) translateX(-4px);
+            }
+            
         }
         div.owl-dots {
             position: relative;
-            border: 2px solid var(--color-first);
             top: -46px;
             button {
-                transition: transform 0.2s ease-in;
+                transition: transform 0.4s ease-in;
             }
             button:is(:hover) {
                 transform: scale(1.1);
             }
             button.owl-dot {
                 span {
-                    background-color: var(--color-second);
+                    background-color: var(--color-fourth);
                     height: 16px;
                     width: 16px;
                 }
             }
             button.owl-dot.active, button.owl-dot:is(:hover) {
-                span{
+                span {
                     background-color: var(--color-first);
                     height: 16px;
                     width: 16px;
-                }                
+                }
             }
         }
     }
     footer {
         display: flex;
+        margin-top: .2rem;
+        margin-right: 2rem;
         justify-content: center;
         align-items: center;
         font-family: var(--ff-heading);
@@ -215,47 +213,34 @@ main.welcome {
             transition: all 0.4s ease-in;
             width: 156px;
         }
-        a:is(:hover){
-            background: url(../images/btn-hover.svg) no-repeat;
-            transform: scale(1.02) translateY(-5px);
+        a:is(:hover) {
+            background: url(../images/btn-hover.svg) no-repeat center;
+            transform: scale(1.1) translateY(-5);
         }
-        a:is(:active){
-            background: url(../images/btn-active.svg) no-repeat;
+        a:is(:active) {
+            background: url(../images/btn-active.svg) no-repeat center;
         }
     }
 }
 
-/* .......................... */
-/*  C A T A L O G U E */
-/* .......................... */
-main.catalogue{
+
+/*----------------------------------------*/
+/* 02 - C A T A L O G U E */
+/*----------------------------------------*/
+main.catalogue {
+    overflow: auto;
     scrollbar-width: none;
-    overflow: scroll;
-    header{
+    header {
         margin-top: 1.4rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        a.btn-back:is(:link, :visited){
+        a.btn-back:is(:link, :visited) {
             transition: transform 0.2s ease-in;
         }
-        a.btn-back:is(:hover){
-            transform: translateX(-4px);
-        }
-    }
-    article{
-        figure{
-            display: flex;
-            flex-direction: column;
-            a:is(:link, :visited){
-                background: url(../images/btn-active.svg); /*remplazar por view png*/
-                height: 30px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 120px;
-            }
 
+        a.btn-back:is(:hover) {
+            transform: translateX(-4px);
         }
     }
     div.owl-carousel {
@@ -263,44 +248,52 @@ main.catalogue{
             display: flex;
             justify-content: center;
             img {
-                width: 120px;
                 height: 120px;
+                width: 120px;
             }
         }
+
         div.owl-nav {
             position: relative;
             top: -180px;
             display: flex;
             justify-content: space-between;
+
             button {
                 transition: transform 0.2s ease-in;
+
                 span {
-                    border: 2px solid var(--color-first);
                     display: flex;
                     height: 44px;
                     width: 34px;
                     text-indent: -9999px;
                 }
-                button:is(:hover) {
-                    background-color: transparent;
-                }
-                button.owl-prev {
-                    span {
-                        background: url(../images/btn-prev.svg) no-repeat center;
-                    }
-                }
-                button.owl-prev :hover {
-                    transform: scale(1.1) translateX(-4px);
-                }
-                button.owl-next {
-                    span {
-                        background: url(../images/btn-next.svg) no-repeat center;
-                    }
-                }
-                button.owl-next :hover {
-                    transform: scale(1.1) translateX(4px);
+            }
+
+            button:is(:hover) {
+                background-color: transparent;
+            }
+
+            button.owl-prev {
+                span {
+                    background: url(../images/btn-prev.svg) no-repeat center;
                 }
             }
+
+            button.owl-prev:hover {
+                transform: scale(1.1) translateX(-4px);
+            }
+
+            button.owl-next {
+                span {
+                    background: url(../images/btn-next.svg) no-repeat center;
+                }
+            }
+
+            button.owl-next:hover {
+                transform: scale(1.1) translateX(-4px);
+            }
         }
+
     }
 }
