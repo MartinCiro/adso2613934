@@ -11,7 +11,7 @@
     --color-fourth: #C4E4FF;
     --color-five: #D895DA;
     --color-six: #D6589F;
-
+    
 }
 
 /* ------------------- */
@@ -24,7 +24,7 @@ body:after {
     width: 0;
     z-index: -1;
     content: url(../images/btn-hover.svg) url(../images/btn-active.svg);
-
+    
 }
 
 /* ------------------- */
@@ -50,6 +50,10 @@ body {
         header {
             position: relative;
             z-index: 3;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
             svg.btn-burger {
                 cursor: pointer;
                 transition: transform 400ms;
@@ -79,9 +83,14 @@ body {
                     stroke-dashoffset: -68px;
                 }
             }
+        }a.btn-back:is(:link, :visited) {
+            transition: transform 0.2s ease-in;
+        }
+    
+        a.btn-back:is(:hover) {
+            transform: translateX(-4px);
         }
         nav.nav {
-            background-color: #0009;
             -webkit-backdrop-filter: blur(14px);
             backdrop-filter: blur(14px);
             border-radius: 20px;
@@ -129,6 +138,32 @@ body {
                 transform: scale(1.02) translateY(-5px);
             }
 
+            a:is(:active) {
+                background: url(../images/btn-active.svg) no-repeat center;
+            }
+        }
+        footer {
+            display: flex;
+            margin-top: .2rem;
+            margin-right: 2rem;
+            justify-content: center;
+            align-items: center;
+            font-family: var(--ff-heading);
+            a:is(:link, :visited){
+                background: url(../images/btn.svg) no-repeat;
+                height: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 2rem;
+                margin-left: 2.2rem;
+                transition: all 0.4s ease-in;
+                width: 156px;
+            }
+            a:is(:hover) {
+                background: url(../images/btn-hover.svg) no-repeat center;
+                transform: scale(1.1) translateY(-5);
+            }
             a:is(:active) {
                 background: url(../images/btn-active.svg) no-repeat center;
             }
@@ -234,32 +269,7 @@ main.welcome {
             }
         }
     }
-    footer {
-        display: flex;
-        margin-top: .2rem;
-        margin-right: 2rem;
-        justify-content: center;
-        align-items: center;
-        font-family: var(--ff-heading);
-        a:is(:link, :visited){
-            background: url(../images/btn.svg) no-repeat;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 6rem;
-            margin-left: 2.2rem;
-            transition: all 0.4s ease-in;
-            width: 156px;
-        }
-        a:is(:hover) {
-            background: url(../images/btn-hover.svg) no-repeat center;
-            transform: scale(1.1) translateY(-5);
-        }
-        a:is(:active) {
-            background: url(../images/btn-active.svg) no-repeat center;
-        }
-    }
+    
 }
 
 /* ------------------- */
@@ -270,20 +280,6 @@ main.catalogue {
     background-color: var(--color-second);
     scrollbar-width: none;
     overflow: scroll;
-    header {
-        margin-top: 1.4rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        a.btn-back:is(:link, :visited) {
-            transition: transform 0.2s ease-in;
-        }
-
-        a.btn-back:is(:hover) {
-            transform: translateX(-4px);
-        }
-    }
     img.logo-top {
         width: 200px;
         height: auto;
@@ -437,3 +433,54 @@ main.catalogue {
     }
 }
 
+/* ------------------- */
+/* VIEW GAME */
+/* ------------------- */
+
+main.view-game {
+    header {
+        margin-bottom: 1rem;
+        h1{
+            font-family: var(--ff-body);
+            font-size: 48px;
+            font-weight: 500;
+            color: var(--color-first);
+        }
+    }
+    section {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+        article {
+            display: flex;
+            flex-direction: column;
+            width: 296px;
+            gap: 1rem;
+            div.row{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                h4 {
+                    font-family: var(--ff-body);
+                    color: var(--color-third);
+                    /* font-weight: bold; Este es mío*/
+                    font-size: 20px;
+                }
+                p {
+                    font-family: var(--ff-body);
+                    color: var(--color-fourth);
+                    font-size: 16px;
+                    line-height: 1.4rem;
+                    text-align: justify;
+                    &.price {
+                        color: var(--color-third);
+                        font-weight: 400;
+                        font-size: 36px;                
+                    }
+                }
+            }
+        }
+    }
+}
