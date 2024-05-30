@@ -10,12 +10,10 @@
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="shortcut icon" href="images/bitmap.png" type="image/x-icon">
     <script src="./js/touch-emulator.js"></script>
     <!-- <script> TouchEmulator(); </script> -->
 </head>
-<style>
-    
-</style>
 <body>
     <main class="catalogue">
         <header>
@@ -38,7 +36,7 @@
     
     
     <nav class="nav">
-        <img src="images/title-menu.svg" alt="Menu" class="title-menu">
+        <h2 class="tt">Menu</h2>
         <menu>
             <a href="login.html">
                 <img src="images/icon-login.svg" alt="Login">Login
@@ -55,16 +53,16 @@
         <form action="" method="post">
             <input type="text">
         </form>
-        <article>
+        <article id="carousel-container">
             <h2>
                 <img src="images/icon-category.svg" alt="Category">Casual
             </h2>
             <div class="owl-carousel owl-theme">
                 <figure>
-                    <img src="images/slide-c1-01.svg" alt="" class="slide">
+                    <img src="images/slide-c1-01.svg" id="slide" alt="" class="slide">
                     <figcaption>Candy Crush</figcaption>
                     <a href="view-game.html" class="btn-more">
-                        <img src="images/ico-more.svg" alt="">view
+                        view
                     </a>
                 </figure>
                 <figure>
@@ -83,66 +81,11 @@
                 </figure>
             </div>
         </article>
-        <article>
-            <h2>
-                <img src="images/icon-category.svg" alt="Category">Sport
-            </h2>
-            <div class="owl-carousel owl-theme">
-                <figure>
-                    <img src="images/slide-c2-01.svg" alt="" class="slide">
-                    <figcaption>Title Game</figcaption>
-                    <a href="view.htmlview-game.html" class="btn-more">
-                        <img src="images/ico-more.svg" alt="">view
-                    </a>
-                </figure>
-                <figure>
-                    <img src="images/slide-c2-02.svg" alt="" class="slide">
-                    <figcaption>Title Game</figcaption>
-                    <a href="view-game.html" class="btn-more">
-                        <img src="" alt="">view
-                    </a>
-                </figure>
-                <figure>
-                    <img src="images/slide-c2-03.svg" alt="" class="slide">
-                    <figcaption>Title Game</figcaption>
-                    <a href="view-game.html" class="btn-more">
-                        <img src="" alt="">view
-                    </a>
-                </figure>
-            </div>
-        </article>
-        <article>
-            <h2>
-                <img src="images/icon-category.svg" alt="Category">Animals
-            </h2>
-            <div class="owl-carousel owl-theme">
-                <figure>
-                    <img src="images/slide-c3-01.svg" alt="" class="slide">
-                    <figcaption>Title Game</figcaption>
-                    <a href="view.htmlview-game.html" class="btn-more">
-                        <img src="images/ico-more.svg" alt="">view
-                    </a>
-                </figure>
-                <figure>
-                    <img src="images/slide-c3-02.svg" alt="" class="slide">
-                    <figcaption>Title Game</figcaption>
-                    <a href="view-game.html" class="btn-more">
-                        <img src="" alt="">view
-                    </a>
-                </figure>
-                <figure>
-                    <img src="images/slide-c3-03.svg" alt="" class="slide">
-                    <figcaption>Title Game</figcaption>
-                    <a href="view-game.html" class="btn-more">
-                        <img src="" alt="">view
-                    </a>
-                </figure>
-            </div>
-        </article>
     </section>
 </main>
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
+    <script src="js/js.js"></script>
     <script>
         $(document).ready(function () {
             $('.owl-carousel').owlCarousel({
