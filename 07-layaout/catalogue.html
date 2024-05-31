@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,9 @@
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    
+    <link rel="shortcut icon" href="images/bitmap.png" type="image/x-icon">
+    <script src="./js/touch-emulator.js"></script>
+    <!-- <script> TouchEmulator(); </script> -->
 </head>
 <body>
     <main class="catalogue">
@@ -17,7 +20,7 @@
             <a href="index.html" class="btn-back">
                 <img src="images/btn-back.svg" alt="Back">
             </a>
-            <img src="images/logo-top.svg" alt="Logo" class="logo-top">
+            <img src="images/logo-welcome.svg" alt="Logo" class="logo-top">
             <svg class="btn-burger" viewBox="0 0 100 100" width="80">
                 <path
                       class="line top"
@@ -30,125 +33,59 @@
                       d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
             </svg>
         </header>
-        <nav class="nav">
-            <img src="images/title-menu.svg" alt="Menu" class="title-menu" >
-            <menu>
-                <a href="login.html">
-                    <img src="images/ico-login.svg" alt="Login">
-                    Login
-                </a>
-                <a href="register.html">
-                    <img src="images/ico-register.svg" alt="Register">
-                    Register
-                </a>
-                <a href="catalogue.html">
-                    <img src="images/ico-catalogue.svg" alt="Catalogue">
-                    Catalogue
-                </a>
-            </menu>
-        </nav>
-        <section class="scroll">
-            <form action="" method="post">
-                <input type="text" placeholder="Filter" maxlength="18" >
-            </form>
-            <article>
-                <h2>
-                    <img src="images/ico-category.svg" alt="Category">
-                    Category 01
-                </h2>
-                <div class="owl-carousel owl-theme">
-                    <figure>
-                        <img src="images/zelda.png" alt="" class="slide">
-                        <figcaption>Zelda</figcaption>                        
-                        <a href="view-game.html" class="btn-more">                            
-                            view
-                        </a>
-                    </figure>
-                    <figure>
-                        <img src="images/slide-c1-02.png" alt="" class="slide">
-                        <figcaption>Football Penalty</figcaption> 
-                        <a href="view-game.html" class="btn-more">                            
-                            view
-                        </a>
-                    </figure>
-                    <figure>
-                        <img src="images/slide02.png" alt="" class="slide">
-                        <figcaption>Mario Kart</figcaption> 
-                        <a href="view-game.html" class="btn-more">                            
-                            view
-                        </a>
-                    </figure>
-                </div>
-            </article>       
-
-           
-            <article>
-                <h2>
-                    <img src="images/ico-category.svg" alt="Category">
-                    Category 02
-                </h2>
-                <div class="owl-carousel owl-theme">
-                    <figure>
-                        <img src="images/slide-c1-04.png" alt="" class="slide">
-                        <figcaption>Tom Rider</figcaption>
-                        <a href="view-game.html" class="btn-more">                            
-                            view
-                        </a>
-                    </figure>
-                    <figure>
-                        <img src="images/god-of-war.png" alt="" class="slide">
-                        <figcaption>God of War</figcaption>
-                        <a href="view-game.html" class="btn-more">                            
-                            view
-                        </a>
-                    </figure>
-                    <figure>
-                        <img src="images/resident.png" alt="" class="slide">
-                        <figcaption>Resident Evil</figcaption>
-                        <a href="view-game.html" class="btn-more">                            
-                            view
-                        </a>
-                    </figure>
-                </div>
-            </article>
-
-            <article>
-                <h2>
-                    <img src="images/ico-category.svg" alt="Category">
-                    Category 03
-                </h2>
-                <div class="owl-carousel owl-theme">
-                    <figure>
-                        <img src="images/age-of-empires.png" alt="" class="slide">
-                        <figcaption>Age of Empires</figcaption>
-                        <a href="view-game.html" class="btn-more">                            
-                            view
-                        </a>
-                    </figure>
-                    <figure>
-                        <img src="images/world.png" alt="" class="slide">
-                        <figcaption>World of Warcraft</figcaption>
-                        <a href="view-game.html" class="btn-more">                           
-                            view
-                        </a>
-                    </figure>
-                    <figure>
-                        <img src="images/diablo.png" alt="" class="slide">
-                        <figcaption>Diablo</figcaption>
-                        <a href="view-game.html" class="btn-more">                            
-                            view
-                        </a>
-                    </figure>
-                </div>
-            </article>         
-
-      
-
-        </section>
-    </main>
     
+    
+    <nav class="nav">
+        <h2 class="tt">Menu</h2>
+        <menu>
+            <a href="login.html">
+                <img src="images/icon-login.svg" alt="Login">Login
+            </a>
+            <a href="register.html">
+                <img src="images/icon-register.svg" alt="Register">Register
+            </a>
+            <a href="catalogue.html">
+                <img src="images/icon-catalogue.svg" alt="Catalogue">Catalogue
+            </a>
+        </menu>
+    </nav>
+    <section class="scroll">
+        <form action="" method="post">
+            <input type="text">
+        </form>
+        <article id="carousel-container">
+            <h2>
+                <img src="images/icon-category.svg" alt="Category">Casual
+            </h2>
+            <div class="owl-carousel owl-theme">
+                <figure>
+                    <img src="images/slide-c1-01.svg" id="slide" alt="" class="slide">
+                    <figcaption>Candy Crush</figcaption>
+                    <a href="view-game.html" class="btn-more">
+                        view
+                    </a>
+                </figure>
+                <figure>
+                    <img src="images/slide-c1-02.svg" alt="" class="slide">
+                <figcaption>Pokemon Go</figcaption>
+                    <a href="view-game.html" class="btn-more">
+                        <img src="" alt="">view
+                    </a>
+                </figure>
+                <figure>
+                    <img src="images/slide-c1-03.svg" alt="" class="slide">
+                <figcaption>FIFA</figcaption>
+                    <a href="view-game.html" class="btn-more">
+                        <img src="" alt="">view
+                    </a>
+                </figure>
+            </div>
+        </article>
+    </section>
+</main>
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
+    <script src="js/js.js"></script>
     <script>
         $(document).ready(function () {
             $('.owl-carousel').owlCarousel({
@@ -156,19 +93,26 @@
                 margin: 10,
                 nav: true,
                 dots: false,
-                autoplay: false,
+                autoplay: true,
                 autoplayTimeout: 5000,
                 responsive: {
                     0: {
                         items: 2
-                    }
+                    }/* ,
+                    600: {
+                        items: 3
+                    },
+                    1000: { //resolucion de 1000 maneja 5 items
+                        items: 1
+                    } */
                 }
             })
-            $('header').on('click', '.btn-burger', function(){
-            $(this).toggleClass('active')
-            $('.nav').toggleClass('active')
-        })
+            $('header').on('click', '.btn-burger', function () {
+                $(this).toggleClass('active')
+                $('.nav').toggleClass('active')
+            })
         })
     </script>
 </body>
+
 </html>
