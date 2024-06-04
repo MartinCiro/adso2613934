@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameApp - View Game</title>
-    <link rel="stylesheet" href="/07-layout/css/reset.css">
-    <link rel="stylesheet" href="/07-layout/css/fonts.css">
-    <link rel="stylesheet" href="/07-layout/css/master.css">        
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/master.css">        
 </head>
 <body>
-    <main class="my-profile">
+    <main class="edit">
         <header>
-            <a href="/07-layout/users/users.html" class="btn-back">
-                <img src="/07-layout/images/btn-back.svg" alt="Back">
+            <a href="../users/users.html" class="btn-back">
+                <img src="../images/btn-back.svg" alt="Back">
             </a>
             <h1>Edit</h1>
             <svg class="btn-burger" viewBox="0 0 100 100" width="80">
@@ -29,58 +29,56 @@
         </header>
         <nav class="nav">    
                 <figure class="avatar" >
-                    <img class="mask" src="/07-layout/images/photo.jpg" alt="Photo">
-                    <img class="border" src="/07-layout/images/borde2.svg" alt="border">
+                    <img class="mask" src="../images/photo.jpg" alt="Photo">
                 </figure>
                 <h2>Lucy Hale</h2>
                 <h4>Admin</h4>
                 <menu>                    
-                    <a href="/07-layout/my-profile.html">
-                        <img src="/07-layout/images/ico-myprofile.svg" alt="My Profile">
+                    <a href="../my-profile.html">
+                        <img src="../images/ico-myprofile.svg" alt="My Profile">
                         My Profile
                     </a>
-                    <a href="/07-layout/dashboard.html">
-                        <img src="/07-layout/images/ico-dashboard.svg" alt="Dashboard">
+                    <a href="../dashboard.html">
+                        <img src="../images/ico-dashboard.svg" alt="Dashboard">
                         Dashboard
                     </a>
-                    <a href="/07-layout/">
-                        <img src="/07-layout/images/ico-logout.svg" alt="Log Out">
+                    <a href="../">
+                        <img src="../images/ico-logout.svg" alt="Log Out">
                         Log Out
                     </a>
                 </menu>
         </nav>
         <section class="scroll">
-            <form action="/07-layout/users/users.html" method="get" >
-                <div class="form-group">
-                    <img id="upload" class="mask" src="/07-layout/images/photo.jpg" alt="Photo">
-                    <img class="border" src="/07-layout/images/borde.svg" alt="Photo">
+            <form action="../users/users.html" method="get" >
+                <div class="upload">
+                    <img id="upload" class="mask border" src="../images/photo.jpg" alt="Photo">
                     <input id="photo" type="file" name="photo" accept="image/*" >
                 </div>
                 
              <div class="form-group">
                 <label>
-                    <img src="/07-layout/images/ico-name.svg" alt="name">
+                    <img src="../images/ico-name.svg" alt="name">
                     Full Name:
                 </label>
                 <input type="text" name="name" value="Lucy Hale"  maxlength="14">
              </div>
              <div class="form-group">
                 <label>
-                    <img src="/07-layout/images/ico-email-register.svg" alt="Password">
+                    <img src="../images/ico-email-register.svg" alt="Password">
                     Email:
                 </label>                
                 <input type="email" name="email" value="lucyhale2024@gmail.com">
              </div>
              <div class="form-group">
                 <label>
-                    <img src="/07-layout/images/ico-phone.svg" alt="name">
+                    <img src="../images/ico-phone.svg" alt="name">
                     Phone Number:
                 </label>
                 <input type="number" name="phonenumber" value="3147348431" maxlength="12">
              </div>
              <div class="form-group">
                 <label>
-                    <img src="/07-layout/images/ico-birthday.svg" alt="name">
+                    <img src="../images/ico-birthday.svg" alt="name">
                     Birth Day:
                 </label>
                 <input type="text" name="name" value="10/10/1985">
@@ -89,15 +87,15 @@
                
              <div class="form-group">
                 <button>
-                    <img src="/07-layout/images/content-btn-save.svg" alt="login">
+                    Save
                 </button>                              
              </div>
 
             </form>
         </section>
     </main>   
-    <script src="/07-layout/js/jquery-3.7.1.min.js"></script>
-    <script src="/07-layout/js/owl.carousel.min.js"></script>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
     <script>
         $(document).ready(function () {
             
@@ -106,18 +104,6 @@
             $('.nav').toggleClass('active')
         })
         //----------------------------
-        $togglePass = false
-        $('section').on('click', '.ico-eye', function(){
-            !$togglePass ? $(this).next().attr('type', 'text')
-                         : $(this).next().attr('type', 'password')
-            
-            !$togglePass ? $(this).attr('src', '/07-layout/images/ico-eye-open.svg')
-                         : $(this).attr('src', '/07-layout/images/ico-eye.svg')
-            
-            $togglePass = !$togglePass
-
-        })
-         //----------------------------
          $('.border').click(function(e) {
             $('#photo').click()
          })

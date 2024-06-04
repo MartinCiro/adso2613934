@@ -14,7 +14,7 @@
             <a href="/07-layout/users/users.html" class="btn-back">
                 <img src="/07-layout/images/btn-back.svg" alt="Back">
             </a>
-            <h1>Edit</h1>
+            <h1>Add</h1>
             <svg class="btn-burger" viewBox="0 0 100 100" width="80">
                 <path
                     class="line top"
@@ -52,7 +52,7 @@
         <section class="scroll">
             <form action="/07-layout/users/users.html" method="get" >
                 <div class="form-group">
-                    <img id="upload" class="mask" src="/07-layout/images/photojohn.jpg" alt="Photo">
+                    <img id="upload" class="mask" src="/07-layout/images/bg-upload-photo.svg" alt="Photo">
                     <img class="border" src="/07-layout/images/borde.svg" alt="Photo">
                     <input id="photo" type="file" name="photo" accept="image/*" >
                 </div>
@@ -62,34 +62,40 @@
                     <img src="/07-layout/images/ico-name.svg" alt="name">
                     Full Name:
                 </label>
-                <input type="text" name="name" value="John Wick"  maxlength="14">
+                <input type="text" name="name" placeholder="john wick" maxlength="14">
              </div>
              <div class="form-group">
                 <label>
                     <img src="/07-layout/images/ico-email-register.svg" alt="Password">
                     Email:
                 </label>                
-                <input type="email" name="email" value="johnwick@gmail.com">
+                <input type="email" name="email" placeholder="johnwick@gmail.com" >
              </div>
              <div class="form-group">
                 <label>
                     <img src="/07-layout/images/ico-phone.svg" alt="name">
                     Phone Number:
                 </label>
-                <input type="number" name="phonenumber" value="31550676890" maxlength="12">
+                <input type="number" name="phonenumber" placeholder="3147348431" maxlength="12">
              </div>
              <div class="form-group">
                 <label>
                     <img src="/07-layout/images/ico-birthday.svg" alt="name">
                     Birth Day:
                 </label>
-                <input type="text" name="name" value="10/10/1985">
+                <input type="text" name="name" placeholder="10/10/1985">
              </div>
              <div class="form-group">
-               
+                <label>
+                    <img src="/07-layout/images/ico-password-register.svg" alt="Password">
+                    Password:
+                </label>
+                <img class="ico-eye" src="/07-layout/images/ico-eye.svg" alt="Eye">
+                <input type="password" name="password" placeholder="dontmesswithmydog">
+             </div>
              <div class="form-group">
                 <button>
-                    <img src="/07-layout/images/content-btn-save.svg" alt="login">
+                    <img src="/07-layout/images/content-btn-addu.svg" alt="login">
                 </button>                              
              </div>
 

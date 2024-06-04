@@ -11,7 +11,7 @@
 <body>
     <main class="my-profile">
         <header>
-            <a href="/07-layout/games/games.html" class="btn-back">
+            <a href="/07-layout/users/users.html" class="btn-back">
                 <img src="/07-layout/images/btn-back.svg" alt="Back">
             </a>
             <h1>Add</h1>
@@ -52,38 +52,49 @@
         <section class="scroll">
             <form action="/07-layout/users/users.html" method="get" >
                 <div class="form-group">
-                    <img id="upload" class="mask" src="/07-layout/images/bg-upload-photo-game.svg" alt="Photo">
+                    <img id="upload" class="mask" src="/07-layout/images/bg-upload-photo.svg" alt="Photo">
                     <img class="border" src="/07-layout/images/borde.svg" alt="Photo">
                     <input id="photo" type="file" name="photo" accept="image/*" >
                 </div>
                 
-                <div class="form-group">
-                    <label>
-                        <img src="/07-layout/images/ico-name-categories.svg" alt="name">
-                        Name:
-                    </label>
-                    <input type="text" name="name" placeholder="play station" maxlength="14">
-                 </div>
-                 <div class="form-group">
-                    <label>
-                        <img src="/07-layout/images/ico-category2.svg" alt="Password">
-                        Category:
-                    </label>                
-                    <input type="description" name="description" placeholder="play station 5" >
-                 </div>
-                 <div class="form-group">
-                    <label>
-                        <img src="/07-layout/images/ico-description.svg" alt="Password">
-                        Description:
-                    </label>                
-                    <div class="description">
-                        <input type="text" class="description" placeholder="write description"></input>
-                    </div>
-                 </div>
-                 
+             <div class="form-group">
+                <label>
+                    <img src="/07-layout/images/ico-name.svg" alt="name">
+                    Full Name:
+                </label>
+                <input type="text" name="name" placeholder="john wick" maxlength="14">
              </div>
              <div class="form-group">
-                <button id="redireccionar" >
+                <label>
+                    <img src="/07-layout/images/ico-email-register.svg" alt="Password">
+                    Email:
+                </label>                
+                <input type="email" name="email" placeholder="johnwick@gmail.com" >
+             </div>
+             <div class="form-group">
+                <label>
+                    <img src="/07-layout/images/ico-phone.svg" alt="name">
+                    Phone Number:
+                </label>
+                <input type="number" name="phonenumber" placeholder="3147348431" maxlength="12">
+             </div>
+             <div class="form-group">
+                <label>
+                    <img src="/07-layout/images/ico-birthday.svg" alt="name">
+                    Birth Day:
+                </label>
+                <input type="text" name="name" placeholder="10/10/1985">
+             </div>
+             <div class="form-group">
+                <label>
+                    <img src="/07-layout/images/ico-password-register.svg" alt="Password">
+                    Password:
+                </label>
+                <img class="ico-eye" src="/07-layout/images/ico-eye.svg" alt="Eye">
+                <input type="password" name="password" placeholder="dontmesswithmydog">
+             </div>
+             <div class="form-group">
+                <button>
                     <img src="/07-layout/images/content-btn-addu.svg" alt="login">
                 </button>                              
              </div>
@@ -126,11 +137,6 @@
          })
          //----------------------------
         })
-
-        //-------------------------------------
-        document.getElementById("redireccionar").addEventListener("click", function() {
-        window.location.href = "games.html";
-        });
     </script>
 </body>
 </html>

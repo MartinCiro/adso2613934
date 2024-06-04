@@ -41,6 +41,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     main {
         background-color: var(--color-second);
         height: 800px;
@@ -685,6 +687,9 @@ main.register {
             }
         }
     }
+main.nav{
+
+}
 
 /* - - - - - - - - - - - - - - - - - - - - */
 /* 01 - D A S H B O A R D*/
@@ -789,7 +794,7 @@ main.dashboard {
 /* - - - - - - - - - - - - - - - - - - - - */
 main.dashboard,
 main.my-profile,
-main.users  {
+main.users, main.edit  {
     header{
         h2.dashboard{
             font-size: 48px;
@@ -814,21 +819,20 @@ main.users  {
                 left: 14px;
                 top: 9px;
             }
-            /* .mask {
+            .mask {
                 mask-image: url(../images/shape-photo.svg);
                 mask-repeat: no-repeat;
                 mask-position: center;
                 object-fit: cover;
                 align-self: center;
                 position: relative;
-                height: 300px;
-                width: 300px;
-            } */
+                height: 200px;
+                width: 200px;
+            }
 
         }
         h2 {
-            color: var(--color-five);
-            font-family: var(--ff-body);
+            color: var(--color-fourth);
             font-size: 24px;
         }
         h4 {
@@ -851,14 +855,14 @@ main.users  {
 /* - - - - - - - - - - - - - - - - - - - - */
 /* 01 - M Y P R O F I L E*/
 /* - - - - - - - - - - - - - - - - - - - - */
-main.my-profile {
+main.show, main.my-profile {
     header {
         .btn-back {
             visibility: visible;
             pointer-events: all;
         }
         h1 {
-            color: var(--color-fourth);
+            color: var(--color-first);
         }
     }
     section {
@@ -876,9 +880,9 @@ main.my-profile {
                 top: -35px;
             }
             .mask {
-                mask-image: url(../images/shape-photo.svg);
-                mask-repeat: no-repeat;
-                mask-position: center top;
+                width: 247px;
+                height: 247px;
+                border-radius: 20px;
                 object-fit: cover;
                 align-self: center;
                 position: relative;
@@ -888,14 +892,13 @@ main.my-profile {
 
         }
         h2 {
-            color: var(--color-first);
+            color: var(--color-fourth);
             font-weight: bold;
             font-family: var(--ff-heading);
             font-size: 24px;
         }
         span {
             color: var(--color-fourth);            
-            height: 60px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
@@ -903,50 +906,59 @@ main.my-profile {
             padding-left: 0.6rem;
             font-size: 16px;
             width: 190px;
+            height: 60px;
+            img{
+                width: 20px;
             }
+        }
+        span.data{
+            background-color: var(--color-fourth);
+            border-radius: 50px;
+            b{
+                color: var(--color-second);
+                font-weight: 500;
+                font-size: 18px;
+            }
+        }
         span.data-description {
             background: url(../images/bg-description.svg) no-repeat center;
             height: 100;
             width: 300;
 
         }
-        span.role {
-            color: var(--color-first);            
-            height: 60px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 0.6rem;
-            padding-left: 0.4rem;
-            font-size: 16px;
-            font-weight: 400;
-            width: 190px;
-        }
         span.email {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--color-first);
-            font-weight: bold;
+            color: var(--color-fourth);
+            opacity: 0.7;
+            font-weight: normal;
             font-size: 18px;
             height: 20px;
             
         }
         span.role {
-            background: url(../images/bg-administrador.svg) no-repeat center;
+            display: flex;
+            text-align: center;
+            flex-direction: row;
+            background-color: var(--color-fourth);
+            border-radius: 50px;
             color: var(--color-first);
+            width: 150px;
+            height: 40px;
         }
         div.grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 0.6rem;
             span {
-                background: url(../images/bg-data-odd.svg) no-repeat center;
+                width: 160px;
+                height: 40px;   
+                border-radius: 50px;
             }
             span:nth-child(-n+2),
             span:nth-child(n+5) {
-                background: url(../images/bg-data-odd.svg) no-repeat center;
+                border-radius: 50px;
             }
         }
     }
@@ -1007,12 +1019,17 @@ main.users {
             height: 100px;
             width: 340px;
             figure.avatar{
-                max-width: 70px;
+                clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+                max-width: 80px;
                 background: url("../images/shape-border-small.svg") no-repeat;
-                background-position: 10px;
-                background-size: auto;
+                background-position: center;
+                background-size: 60%;
+                margin-left: 10px;
+                border-radius: 2px;
+                border: 1px solid var(--color-second);
                 img{
-                    margin-left: 10px;
+                    width: min-content;
+                    margin-left: 0px;
                 }
             }
             aside {
@@ -1086,4 +1103,97 @@ main.users {
             transform: scale(1.1) translateX(4px);
         }
     }
+}
+
+/* - - - - - - - - - - - - - - - - - - - - */
+/* 01 - ADMIN*/
+/* - - - - - - - - - - - - - - - - - - - - */
+main.edit{
+    header{
+        color: var(--color-first);
+        font-size: 18px;
+        font-weight: 200;
+    }
+    section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 300px;
+        }
+        .upload {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: .2rem;
+            flex-direction: column;
+            img{
+                width: 136px;
+                height: 138.54px;
+                border-radius: 20px;
+                object-fit: cover;
+                cursor: pointer;
+            }
+            input{
+                display: none;
+            }
+        }
+        div.form-group{
+            display: flex;
+            flex-direction: column;
+            gap: .2rem;
+            label{
+                color: var(--color-third);
+                font-size: 16px;
+                font-weight: 300;
+                img{
+                    width: 20px;
+                    height: 20px;
+                    background-color: var(--color-fourth);
+                    border: 1px solid var(--color-five);
+                    border-radius: 5px;
+                    object-fit: cover;
+                }
+            }
+            input{
+                background-color: var(--color-fourth);
+                border: 1px solid var(--color-five);
+                border-radius: 50px;
+                padding: 5px;
+                width: 300px;
+                height: 60px;
+                font-size: 16px;
+                font-weight: 300;
+                color: var(--color-second);
+                font-family: var(--ff-heading);
+                &:focus{
+                    outline: none;
+                }
+
+            }
+        }
+        button{
+            background-color: var(--color-fourth);
+            border: 3px solid var(--color-five);
+            border-radius: 50px;
+            padding: 5px;
+            width: 111px;
+            height: 44px;
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--color-first);
+            font-family: var(--ff-heading);
+            &:hover{
+                background-color: var(--color-second);
+                color: var(--color-first);
+            }
+        }
+    }
+    
 }
