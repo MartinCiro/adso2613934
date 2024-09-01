@@ -31,8 +31,25 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store( CategoryRequest $request)
+    public function store(CategoryRequest $request)
     {
+        //dd($request->all());
+
+        if($request->hasFile('image')) {
+            $photo =time() . '.'.$request->image->extension();
+            $request->image->move(public_path('images'), $photo);
+        }
+
+        $category = new Category;
+        $category->name = $request->name;
+        $category->manufacturer = $request->manufacturer;
+        $category->releasedate = $request->releasedate;
+        $category->description = $request->description;
+        $category->image = $photo;
+
+        if ($category->save()) {
+            return redirect('categories')->with('message', 'The user: '. $category->name. 'was successfully added');
+        }
     }
 
     /**
@@ -58,23 +75,19 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         //
-        if($request->hasFile('photo')) {
+        if($request->hasFile('image')) {
             $photo = time() .'.' .$request->photo->extension();
             $request->photo->move(public_path('images'), $photo);
         }else{
             $photo = $request->originPhoto;
         }
-        $category->document = $request->document;
-        $category->fullname = $request->fullname;
-        $category->gender = $request->gender;
-        $category->birthdate = $request->birthdate;
-        $category->photo = $photo;
-        $category->phone = $request->phone;
-        $category->email = $request->email;
+        $category->name = $request->name;
+        $category->manufacturer = $request->manufacturer;
+        $category->image = $photo;
         
         if($category->save()) {
             return redirect('categories')
-            ->with('message', 'The category: '. $category->fullname .' was successfully updated!');
+            ->with('message', 'The category: '. $category->name .' was successfully updated!');
         }
     }
 

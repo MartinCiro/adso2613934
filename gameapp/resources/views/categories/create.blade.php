@@ -23,70 +23,40 @@
 </header>
 @include('menuburger')
 <section class="scroll">
-    <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('categories.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <img id="upload" class="mask" src="{{asset('images/bg-upload-photo.svg')}}" alt="photo">
             <img class="border" src="{{asset('images/borde.svg')}}" alt="border">
-            <input id="photo" type="file" name="photo" accept="image/*">
+            <input id="photo" type="file" name="image" accept="image/*">
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-document.svg')}}" alt="document">
-                Document:
+                <img src="{{asset('images/ico-document.svg')}}" alt="name">
+                Name:
             </label>
-            <input type="text" name="document" placeholder="12323456" value="{{old('document')}}">
+            <input type="text" name="name" placeholder="gameBox" value="{{old('name')}}">
         </div>
         <div class="form-group">
             <label>
                 <img src="{{asset('images/ico-name.svg')}}" alt="document">
-                Fullname:
+                Manufacturer:
             </label>
-            <input type="text" name="fullname" placeholder="Rosa Perez" value="{{old('fullname')}}">
+            <input type="text" name="manufacturer" placeholder="Microsoft" value="{{old('manufacturer')}}">
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-gender.svg')}}" alt="gender">
-                Gender:
+                <img src="{{asset('images/ico-name.svg')}}" alt="document">
+                Description:
             </label>
-            <input type="text" name="gender" placeholder="Female" value="{{old('gender')}}">
+            <input type="text" name="description" placeholder="Microsoft" value="{{old('description')}}">
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-email-register')}}.svg" alt="Email">
-                Email:
+                <img src="{{asset('images/ico-name.svg')}}" alt="document">
+                Releasedate:
             </label>
-            <input type="email" name="email" value="{{old('email')}}" placeholder="dirlortr@gmail.com">
-        </div>
-        <div class="form-group">
-            <label>
-                <img src="{{asset('images/ico-phone.svg')}}" alt="phone">
-                Phone Number:
-            </label>
-            <input type="text" value="{{old('phone')}}" name="phone" placeholder="320XXXXXXXX">
-        </div>
-        <div class="form-group">
-            <label>
-                <img src="{{asset('images/ico-birthday.svg')}}" alt="text">
-                Birth Date:
-            </label>
-            <input type="text" value="{{old('birthdate')}}" name="birthdate" placeholder="1980-10-10">
-        </div>
-        <div class="form-group">
-            <label>
-                <img src="{{asset('images/ico-password-register.svg')}}" alt="password">
-                Password:
-            </label>
-            <img class="ico-eye" src="{{asset('images/ico-eye-open.svg')}}" alt=" ">
-            <input type="password" name="password" placeholder="dontmesswithmydog">
-        </div>
-        <div class="form-group">
-            <label>
-                <img src="{{asset('images/ico-password-register.svg')}}" alt="password">
-                Confirm Password:
-            </label>
-            <img class="ico-eye" src="{{asset('images/ico-eye-open.svg')}}" alt=" ">
-            <input type="password" name="password_confirmation" placeholder="dontmesswithmydog">
+            <input type="date" name="releasedate" value="{{old('releasedate')}}">
         </div>
         <div class="form-group">
             <button type="submit">
@@ -115,18 +85,6 @@
             })
         @endif
         
-    })
-    //----------------------------
-    $togglePass = false
-    $('section').on('click', '.ico-eye', function(){
-        !$togglePass ? $(this).next().attr('type', 'text')
-                    : $(this).next().attr('type', 'password')
-
-        !$togglePass ? $(this).attr('src', "{{ asset('images/ico-eye-hidden.svg') }}")
-                    : $(this).attr('src', "{{ asset('images/ico-eye-open.svg') }}")
-
-        $togglePass = !$togglePass
-
     })
      //----------------------------
     $('.border').click(function(e) {

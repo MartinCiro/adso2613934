@@ -1,35 +1,28 @@
-@forelse ($users as $user)
-@foreach ( $users as $user )
-    
-
+@forelse ($categories as $category)
 <article class="record">
     <figure class="avatar">
-        <img class="mask" src="{{ asset('images') . '/' . $user->photo }}" alt="Photo">
-        <img class="border" src="../images/shape-border-small.svg" alt="Border">
+        <img class="mask" src="{{ asset('images'). '/' . $category->image }}" alt="Photo" />
+        <img class="border" src="{{ asset('images/border-small.svg') }}" alt="Border" />
     </figure>
     <aside>
-        <h3>{{ $user->fullname }}</h3>
-        <h4>{{ $user->role }}</h4>
+        <h3>{{ $category->name }}</h3>
     </aside>
     <figure class="actions">
-        <a href="{{ url('users/' . $user->id) }}">
-            <img src="{{ asset('images/ico-search.svg') }}" alt="Show">
+        <a href="{{ url('categories/' . $category->id) }}">
+            <img src="{{ asset('images/ico-search.svg') }}" alt="Show" />
         </a>
-        <a href="{{ url('users/' . $user->id . '/edit') }}">
-            <img src="{{ asset('images/ico-edit.svg') }}" alt="Edit">
+        <a href="{{ url('categories/' . $category->id . '/edit') }}">
+            <img src="{{ asset('images/ico-edit.svg') }}" alt="Edit" />
         </a>
-
-
-        <a href="javascript:;" class="delete" data-fullname="{{ $user->fullname }}">
-            <img src="{{ asset('images/ico-trash.svg') }}" alt="Delete">
+        <a href="javascript:;" class="delete" data-fullname="{{ $category->name }}">
+            <img src="{{ asset('images/ico-trash.svg') }}" alt="Delete" />
         </a>
-        <form action="{{ url('users/' . $user->id) }}" method="POST" style="display: none">
+        <form action="{{ url('categories/' . $category->id) }}" method="post" style="display: none">
             @csrf
-            @method('DELETE')
+            @method('delete')
         </form>
     </figure>
 </article>
-@endforeach
 @empty
-    No found
+    No found 🥵
 @endforelse

@@ -26,4 +26,13 @@ class Category extends Model
     {
         return $this->hasMany('App\Models\Category');
     }
+
+    public function scopeNames($query, $q)
+{
+    if (trim($q)) {
+        $q = strtolower($q); // Convertir la búsqueda a minúsculas
+        $query->whereRaw('LOWER(name) LIKE ?', ["%$q%"])
+              ->orWhereRaw('LOWER(manufacturer) LIKE ?', ["%$q%"]);
+    }
+}
 }

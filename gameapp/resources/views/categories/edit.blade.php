@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title', 'GameApp - Edit User')
-@section('class', 'edit register')
+@section('title', 'GameApp - Edit Category')
+@section('class', 'edit register my-profile')
 
 @section('content')
 
 <header>
-    <a href="javascript:;" class="btn-back">
+    <a href="{{ url('categories') }}" class="btn-back">
         <img src="{{asset('images/btn-back.svg')}}" alt="Back">
     </a>
     <h1>Edit</h1>
@@ -23,61 +23,39 @@
 </header>
 @include('menuburger')
 <section class="scroll">
-    <form action="{{ url('users/' . $user->id ) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ url('categories/' .$category->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
-            <img id="upload" class="mask" src="{{ asset('images') . '/' . $user->photo }}" alt="photo">
+            <img id="upload" class="mask" src="{{ asset('images') . '/' . $category->image }}" alt="photo">
             <img class="border" src="{{asset('images/borde.svg')}}" alt="border">
-            <input id="photo" type="file" name="photo" accept="image/*">
-            <input type="hidden" name="originPhoto" value="{{ $user->photo }}">
-            {{-- <input type="hidden" name="id" value="{{ $user->id }}"> --}}
+            <input id="photo" type="file" name="image" accept="image/*">
+            <input type="hidden" name="originPhoto" value="{{ $category->image }}">
+            {{-- <input type="hidden" name="id" value="{{ $category->id }}"> --}}
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-document.svg')}}" alt="document">
-                Document:
+                Name:
             </label>
-            <input type="text" name="document" placeholder="12323456" value="{{old('document',  $user->document)}}">
+            <input type="text" name="name" value="{{ old('name', $category->name) }}">
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-name.svg')}}" alt="document">
-                Fullname:
+                Manufacturer:
             </label>
-            <input type="text" name="fullname" placeholder="Rosa Perez" value="{{old('fullname',  $user->fullname)}}">
+            <input type="text" name="manufacturer" value="{{ old('manufacturer', $category->manufacturer) }}">
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-gender.svg')}}" alt="gender">
-                Gender:
+                Release Date:
             </label>
-            <select name="gender" class="gender">
-                <option value="">Select...</option>
-                <option value="Female" @if(old('gender',  $user->gender) == 'Female') selected @endif>Female</option>
-                <option value="Male" @if(old('gender',  $user->gender) == 'Male') selected @endif>Male</option>
-            </select>
+            <input type="date" name="releasedate"  value="{{ old('releasedate', $category->releasedate)}}">
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-email-register')}}.svg" alt="Email">
-                Email:
+                Description:
             </label>
-            <input type="email" name="email" value="{{old('email',  $user->email)}}" placeholder="dirlortr@gmail.com">
-        </div>
-        <div class="form-group">
-            <label>
-                <img src="{{asset('images/ico-phone.svg')}}" alt="phone">
-                Phone Number:
-            </label>
-            <input type="text" value="{{old('phone',  $user->phone)}}" name="phone" placeholder="320XXXXXXXX">
-        </div>
-        <div class="form-group">
-            <label>
-                <img src="{{asset('images/ico-birthday.svg')}}" alt="text">
-                Birth Date:
-            </label>
-            <input type="text" value="{{old('birthdate',  $user->birthdate)}}" name="birthdate" placeholder="1980-10-10">
+            <textarea name="description">{{ old('description', $category->description) }}</textarea>
         </div>
         <div class="form-group">
             <button type="submit">

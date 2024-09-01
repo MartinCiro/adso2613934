@@ -79,6 +79,9 @@ Route::post('/user/create', function(){
 //search
 Route::post('users/search', [UserController::class, 'search']);
 
+//search
+Route::post('categories/search', [CategoryController::class, 'search']);
+
 //Export
 Route::get('export/users/pdf', [UserController::class, 'pdf']);
 Route::get('export/users/excel', [UserController::class, 'excel']);

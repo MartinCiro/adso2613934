@@ -1,5 +1,4 @@
 @forelse ($users as $user)
-@foreach ( $users as $user )
     
 
 <article class="record">
@@ -29,7 +28,6 @@
         </form>
     </figure>
 </article>
-@endforeach
 @empty
     No found
 @endforelse

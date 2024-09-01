@@ -3,7 +3,7 @@
 @section('class', 'users')
 
 @section('content')
-    
+
     <header>
         <a href="{{ url('dashboard') }}" class="btn-back">
             <img src="../images/btn-back.svg" alt="Back">
@@ -25,41 +25,42 @@
             </a>
 
             <div class="options">
-                <a href="{{ 'export/users/pdf' }}"><img src="{{ asset('images/btn-export-pdf.svg')}}" alt="PDF"></a>
-                <a href="{{ 'export/users/excel' }}"><img src="{{ asset('images/btn-export-excel.svg')}}" alt="EXCEL"></a>
-                <input type="text" name="qsearch" id="qsearch">   
+                <a href="{{ 'export/users/pdf' }}"><img src="{{ asset('images/btn-export-pdf.svg') }}" alt="PDF"></a>
+                <a href="{{ 'export/users/excel' }}"><img src="{{ asset('images/btn-export-excel.svg') }}"
+                        alt="EXCEL"></a>
+                <input type="text" name="qsearch" id="qsearch">
             </div>
             <div class="loader"></div>
-            <div id="list">            
-            @foreach ($users as $user)
-                <article class="record">
-                    <figure class="avatar">
-                        <img class="mask" src="{{ asset('images') . '/' . $user->photo }}" alt="Photo">
-                        <img class="border" src="../images/shape-border-small.svg" alt="Border">
-                    </figure>
-                    <aside>
-                        <h3>{{ $user->fullname }}</h3>
-                        <h4>{{ $user->role }}</h4>
-                    </aside>
-                    <figure class="actions">
-                        <a href="{{ url('users/' . $user->id) }}">
-                            <img src="{{ asset('images/ico-search.svg') }}" alt="Show">
-                        </a>
-                        <a href="{{ url('users/' . $user->id . '/edit') }}">
-                            <img src="{{ asset('images/ico-edit.svg') }}" alt="Edit">
-                        </a>
+            <div id="list">
+                @foreach ($users as $user)
+                    <article class="record">
+                        <figure class="avatar">
+                            <img class="mask" src="{{ asset('images') . '/' . $user->photo }}" alt="Photo">
+                            <img class="border" src="../images/shape-border-small.svg" alt="Border">
+                        </figure>
+                        <aside>
+                            <h3>{{ $user->fullname }}</h3>
+                            <h4>{{ $user->role }}</h4>
+                        </aside>
+                        <figure class="actions">
+                            <a href="{{ url('users/' . $user->id) }}">
+                                <img src="{{ asset('images/ico-search.svg') }}" alt="Show">
+                            </a>
+                            <a href="{{ url('users/' . $user->id . '/edit') }}">
+                                <img src="{{ asset('images/ico-edit.svg') }}" alt="Edit">
+                            </a>
 
 
-                        <a href="javascript:;" class="delete" data-fullname="{{ $user->fullname }}">
-                            <img src="{{ asset('images/ico-trash.svg') }}" alt="Delete">
-                        </a>
-                        <form action="{{ url('users/' . $user->id) }}" method="POST" style="display: none">
-                            @csrf
-                            @method('DELETE')
-                        </form>
-                    </figure>
-                </article>
-            @endforeach
+                            <a href="javascript:;" class="delete" data-fullname="{{ $user->fullname }}">
+                                <img src="{{ asset('images/ico-trash.svg') }}" alt="Delete">
+                            </a>
+                            <form action="{{ url('users/' . $user->id) }}" method="POST" style="display: none">
+                                @csrf
+                                @method('DELETE')
+                            </form>
+                        </figure>
+                    </article>
+                @endforeach
             </div>
         </div>
     </section>
@@ -77,67 +78,70 @@
 @section('js')
     <script>
         $(document).ready(function() {
-            $('.loader').hide()
-
-            $('header').on('click', '.btn-burger', function() {
-                $(this).toggleClass('active')
-                $('.nav').toggleClass('active')
-
-                @if (session('message'))
-                    Swal.fire({
-                        position: 'top',
-                        icon: 'success',
-                        title: '{{ session('message') }}',
-                        toast: true,
-                        timer: 5000
-                    })
-                @endif
-
-                
-            });
-
-            $('figure').on('click', '.delete', function() {
-                    $fullname = $(this).data('data-fullname')
-
-                    Swal.fire({
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!" + $fullname,
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        toast: true,
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, delete it!'
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            $(this).next().submit()
-                        }
-                    })
-                });
-            
-            $('body').on('keyup', '#qsearch', function(e) {
-                e.preventDefault()
-                $query = $(this).val()
-                $token = $('input[name=_token]').val()
-                $model = 'users'
-                $('.loader').show()
-                $('.area').hide()
-
-                setTimeout(() => {
-                    $.post($model + '/search', {
-                        q: $query,
-                        _token: $token
-                    },
-                    function(data) {
-                        $('#list').html(data)
-                        $('.loader').hide()
-                        $('#list').fadeIn('slow')
-                    }
-                )
-                }, 2000);
-
-                
-            });            
-        })
-    </script>
+                  $('.loader').hide()
+                  //-------------------------------------------------
+                  $('header').on('click', '.btn-burger', function() {
+                      $(this).toggleClass('active')
+                      $('.nav').toggleClass('active')
+                  });
+                  //---------------------------------------
+                  @if (session('message'))
+                      Swal.fire({
+                          position: "top",
+                          title: '{{ session('message') }}',
+                          icon: "success",
+                          toast: true,
+                          timer: 5000
+                      })
+                  @endif
+      
+                  //-------------------------------------------------
+      
+                  //--------------------------------------------
+                  $('.btn-delete').on('click', function() {
+                      var $this = $(this);
+                      var $name = $this.attr('data-fullname');
+                      Swal.fire({
+                          title: "Estas seguro?",
+                          text: "Deseas eliminar a: " + $name,
+                          icon: "warning",
+                          showCancelButton: true,
+                          confirmButtonColor: "#3085d6",
+                          cancelButtonColor: "#d33",
+                          confirmButtonText: "Si, eliminar",
+                          cancelButtonText: "Cancelar"
+                      }).then((result) => {
+                          if (result.isConfirmed) {
+                              $this.next('form').submit()
+                          }
+                      });
+                  })
+      
+                  //-------------------------------------------------
+                  $('body').on('keyup', '#qsearch', function(e) {
+                      e.preventDefault()
+                      $query = $(this).val()
+                      $token = $('input[name=_token]').val()
+                      $model = 'users'
+      
+                      $('.loader').show()
+                      $('#list').hide()
+      
+                      setTimeout(() => {
+                          $.post($model + '/search', {
+                                  q: $query,
+                                  _token: $token
+                              },
+                              function(data) {
+                                  $('#list').html(data)
+                                  $('.loader').hide()
+                                  $('#list').fadeIn('slow')
+                              }
+                          )
+                      }, 1000);
+      
+                      //--------------------------------------------
+                  })
+              });
+      </script>
 @endsection

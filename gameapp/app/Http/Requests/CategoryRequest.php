@@ -22,64 +22,40 @@ class CategoryRequest extends FormRequest
      */
     public function rules(): array
     {
-        if ($this->method() == 'PUT') {
+        if ($this->method() === 'PUT') {
             return [
-                'document' => ['required', 'numeric', 'unique:'.Category::class, $this->id],
-                'fullname' => ['required', 'string'],
-                'gender' => ['required'],
-                'birthdate' => ['required', 'date'],
-                'phone' => ['required'],
-                'email' => ['required', 'string', 'lowercase', 'email', 'unique:'.Category::class, $this->id]                
+                'name' => 'required|string'.$this->id,
+                'manufacturer' => 'required|string',
+                'releasedate' => 'required|date',
+                'description' => 'required|string',
+
             ];
-        }else {
+        } else {
             return [
-                    'document' => ['required', 'numeric', 'unique:'.Category::class],
-                    'fullname' => ['required', 'string'],
-                    'gender' => ['required'],
-                    'birthdate' => ['required', 'date'],
-                    'photo' => ['required', 'image'],
-                    'phone' => ['required'],
-                    'email' => ['required', 'string', 'lowercase', 'email', 'unique:'.Category::class],
-                    'password' => ['required', 'confirmed']            
+                'name' => ['required', 'string', 'unique:'.Category::class],
+                'image' => ['required', 'image'],
+                'manufacturer' => ['required', 'string'],
+                'releasedate' => ['required', 'date'],
+                'description' => ['required', 'string']
             ];
         }
-        
     }
+    
     public function messages(): array
     {
         return [
-            'document.required' => 'El campo de documento es obligatorio',
-            'document.numeric' => 'El campo de documento debe ser un número',
-            'document.unique' => 'El campo de documento ya existe',
-            'fullname.required' => 'El campo de nombre completo es obligatorio',
-            'fullname.string' => 'El campo de nombre completo debe ser un texto',
-            'fullname.max' => 'El campo de nombre completo no debe ser mayor a 64 caracteres',
-            'gender.required' => 'El campo de genero es obligatorio',
-            'birthdate.required' => 'El campo de fecha de nacimiento es obligatorio',
-            'birthdate.date' => 'El campo de fecha de nacimiento debe ser una fecha',
-            'photo.required' => 'El campo de imagen es obligatorio',
-            'photo.image' => 'El campo de imagen debe ser una imagen',
-            'phone.required' => 'El campo de teléfono es obligatorio',
-            'email.required' => 'El campo de correo electrónico es obligatorio',
-            'email.lowercase' => 'El campo de correo electrónico debe ser en minúsculas',
-            'email.email' => 'El campo de correo electrónico debe ser un correo electrónico',
-            'email.unique' => 'El campo de correo electrónico ya existe',
-            'password.required' => 'El campo de contraseña es obligatorio',
-            'password.confirmed' => 'El campo de confirmar contraseña no coincide',
+            'name.required' => 'El campo de nombre es obligatorio',
+            'name.unique' => 'El campo de nombre ya existe',
+            'manufacturer.required' => 'El campo de manufacturer es obligatorio',
+            'manufacturer.unique' => 'El campo de manufacturer ya existe'
         ];
     }
 
     public function attributes(): array
     {
         return [
-            'document' => 'documento',
-            'fullname' => 'nombre completo',
-            'gender' => 'genero',
-            'birthdate' => 'fecha de nacimiento',
-            'photo' => 'imagen',
-            'phone' => 'teléfono',
-            'email' => 'correo electrónico',
-            'password' => 'contraseña',
+            'name' => 'nombre categoria',
+            'manufacturer' => 'nombre creador'
         ];
     }
 
