@@ -65,7 +65,7 @@
         <a class="btn-prev" href="javascript:;">
             <img src="{{ asset('images/btn-prev.svg') }}" alt="prev">
         </a>
-        <span>01/03</span>
+        <span>01/01</span>
         <a class="btn-prev" href="javascript:;">
             <img src="{{ asset('images/btn-next.svg') }}" alt="next">
         </a>
@@ -94,9 +94,9 @@
             //-------------------------------------------------
 
             //--------------------------------------------
-            $('.btn-delete').on('click', function() {
+            $('.delete').on('click', function() {
                 var $this = $(this);
-                var $name = $this.attr('data-fullname');
+                var $name = $this.attr('data-name');
                 Swal.fire({
                     title: "Estas seguro?",
                     text: "Deseas eliminar a: " + $name,

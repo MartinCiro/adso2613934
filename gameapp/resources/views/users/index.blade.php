@@ -98,7 +98,7 @@
                   //-------------------------------------------------
       
                   //--------------------------------------------
-                  $('.btn-delete').on('click', function() {
+                  $('.delete').on('click', function() {
                       var $this = $(this);
                       var $name = $this.attr('data-fullname');
                       Swal.fire({
