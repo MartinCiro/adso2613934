@@ -83,7 +83,10 @@ class CategoryController extends Controller
         }
         $category->name = $request->name;
         $category->manufacturer = $request->manufacturer;
+        $category->releasedate = $request->releasedate;
+        $category->description = $request->description;
         $category->image = $photo;
+
         
         if($category->save()) {
             return redirect('categories')
