@@ -7,8 +7,6 @@ use App\Models\Category;
 use App\Http\Requests\GameRequest;
 use Illuminate\Http\Request;
 
-use function PHPUnit\Framework\returnSelf;
-
 class GameController extends Controller
 {
     /**
@@ -30,7 +28,33 @@ class GameController extends Controller
         return view('games.create') ->with('cats', $cats);
     }
 
+ /**
+     * Store a newly created resource in storage.
+     */
+    public function store(GameRequest $request)
+    {
+        //dd($request->all());
 
+        if($request->hasFile('image')) {
+            $photo =time() . '.'.$request->image->extension();
+            $request->image->move(public_path('images'), $photo);
+        }
+
+        $game = new Game;
+        $game->title       = $request->title;
+        $game->developer   = $request->developer;
+        $game->releasedate = $request->releasedate;
+        $game->category_id = $request->category_id;
+        $game->price       = $request->price;
+        $game->genre       = $request->genre;
+        $game->slider      = $request->slider;
+        $game->description = $request->description;
+        $game->image       = $photo;
+
+        if ($game->save()) {
+            return redirect('games')->with('message', 'The game: '. $game->title. 'was successfully added');
+        }
+    }
 
     /**
      * Display the specified resource.
