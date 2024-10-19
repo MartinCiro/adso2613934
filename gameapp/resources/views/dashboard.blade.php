@@ -46,7 +46,7 @@
                 </aside>
                 <aside>
                     <h2>Games</h2>
-                    <a class="btn-more"  href="{{ url ('games') }}">">
+                    <a class="btn-more"  href="{{ url ('games') }}">
                     view
                     </a>
                 </aside>

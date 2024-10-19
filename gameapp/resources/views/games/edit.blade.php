@@ -1,12 +1,13 @@
-@extends('layouts.app')
-@section('title', 'GameApp - Edit User')
-@section('class', 'edit register')
+@extends ('layouts.app')
+@section('tittle','GameApp- Edit User')
+@section('class','my-profile register')
+
 
 @section('content')
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <header>
-    <a href="javascript:;" class="btn-back">
-        <img src="{{asset('images/btn-back.svg')}}" alt="Back">
+    <a href="{{ url('games') }}" class="btn-back">
+        <img src="{{ asset('images/btn-back.svg')}}" alt="Back">
     </a>
     <h1>Edit</h1>
     <svg class="btn-burger" viewBox="0 0 100 100" width="80">
@@ -22,66 +23,84 @@
     </svg>
 </header>
 @include('menuburger')
+
 <section class="scroll">
-    <form action="{{ url('users/' . $user->id ) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ url('games/' .$game->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="form-group">
-            <img id="upload" class="mask" src="{{ asset('images') . '/' . $user->photo }}" alt="photo">
-            <img class="border" src="{{asset('images/borde.svg')}}" alt="border">
-            <input id="photo" type="file" name="photo" accept="image/*">
-            <input type="hidden" name="originPhoto" value="{{ $user->photo }}">
-            {{-- <input type="hidden" name="id" value="{{ $user->id }}"> --}}
+            <img id="upload" class="mask" src="{{ asset ('images') . '/' . $game->image }}" alt="image">
+            <img class="border" src="{{asset ('images/borde.svg') }}" alt="border">
+            <input id="photo" type="file" name="image" accept="image/*">
+            <input type="hidden" name="originphoto" value="{{ $game->image}}">
+            <input type="hidden" name="id" value="{{ $game->id}}">
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-document.svg')}}" alt="document">
-                Document:
+                <img src="{{ asset ('images/ico-name-categories.svg') }}" alt="document">
+                Title:
             </label>
-            <input type="text" name="document" placeholder="12323456" value="{{old('document',  $user->document)}}">
+            <input type="text" name="title" placeholder="The Legend of Zelda" value="{{old('title', $game->title)}}">
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-name.svg')}}" alt="document">
-                Fullname:
+                <img src="{{ asset ('images/ico-name.svg') }}" alt="document">
+                Developer:
             </label>
-            <input type="text" name="fullname" placeholder="Rosa Perez" value="{{old('fullname',  $user->fullname)}}">
+            <input type="text" name="developer" placeholder="Rosa Perez" value="{{old('developer', $game->developer)}}">
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-gender.svg')}}" alt="gender">
-                Gender:
+                <img src="{{ asset ('images/ico-category2.svg') }}" alt="document">
+                Category:
             </label>
-            <select name="gender" class="gender">
+            <select name="category_id">
                 <option value="">Select...</option>
-                <option value="Female" @if(old('gender',  $user->gender) == 'Female') selected @endif>Female</option>
-                <option value="Male" @if(old('gender',  $user->gender) == 'Male') selected @endif>Male</option>
+                @foreach ($cats as $cat)
+                <option value="{{ $cat->id }}" @if(old('category_id', $game->category_id) == $cat->id) selected @endif>{{ $cat->name }}</option>
+                @endforeach
             </select>
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-email-register')}}.svg" alt="Email">
-                Email:
+                <img src="{{ asset ('images/ico-gender.svg') }}" alt="releasedate">
+                releasedate:
             </label>
-            <input type="email" name="email" value="{{old('email',  $user->email)}}" placeholder="dirlortr@gmail.com">
+            <input type="date" name="releasedate" placeholder="14-09-2024" value="{{old('releasedate', $game->releasedate)}}">
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-phone.svg')}}" alt="phone">
-                Phone Number:
+                <img src="{{ asset ('images/ico-email-register.svg') }}" alt="Email">
+                Price:
             </label>
-            <input type="text" value="{{old('phone',  $user->phone)}}" name="phone" placeholder="320XXXXXXXX">
+            <input type="numeric" name="price" value="{{old('price', $game->price)}}" placeholder="$5000">
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-birthday.svg')}}" alt="text">
-                Birth Date:
+                <img src="{{ asset ('images/ico-phone.svg') }}" alt="phone">
+                Genre:
             </label>
-            <input type="text" value="{{old('birthdate',  $user->birthdate)}}" name="birthdate" placeholder="1980-10-10">
+            <input type="text" value="{{old('genre', $game->genre)}}" name="genre" placeholder="genre">
+        </div>                       
+        <div class="form-group">
+            <label>
+                <img src="{{ asset ('images/ico-description.svg') }}" alt="text">
+                Description:
+            </label>
+            <input type="text" value="{{old('description', $game->description)}}" name="description" placeholder="lorem 5">
+        </div>        <div class="form-group">
+            <label>
+                Slider:
+            </label>
+            <select name="slider">
+                <option value="">Select...</option>
+                <option value="0" @if (old('slider') == 1) selected @endif>Inactive</option>
+                <option value="1" @if (old('slider') == 0) selected @endif>Active</option>
+            </select>
         </div>
         <div class="form-group">
             <button type="submit">
-                Save
+                <img src="{{ asset ('images/content-btn-save.svg') }}" alt="Edit">
             </button>
         </div>
     </form>
@@ -95,17 +114,18 @@
         $('header').on('click', '.btn-burger', function(){
         $(this).toggleClass('active')
         $('.nav').toggleClass('active')
+    })
+    //----------------------------
+    $togglePass = false
+    $('section').on('click', '.ico-eye', function(){
+        !$togglePass ? $(this).next().attr('type', 'text')
+                    : $(this).next().attr('type', 'password')
 
-        @if (session('message'))
-            Swal.fire({
-                position: 'top',
-                icon: 'success',
-                title: '{{ session('message') }}',
-                toast: true,
-                timer: 5000
-            })
-        @endif
-        
+        !$togglePass ? $(this).attr('src', "{{ asset ('images/ico-eye.svg')}}")
+                    : $(this).attr('src', "{{asset('images/ico-eye-open.svg') }}")
+
+        $togglePass = !$togglePass
+
     })
      //----------------------------
     $('.border').click(function(e) {
@@ -122,28 +142,25 @@
      //----------------------------
     })
 </script>
-    
-
-@if ($errors->any())
-    @php $error = '' @endphp
-    @foreach ($errors->all() as $message)
+@if (count($errors->all()) > 0)
+@php $error = '' @endphp
+@foreach ($errors->all() as $message)
         @php $error .= '<li>' . $message . '</li>' @endphp
-    @endforeach
+@endforeach
 
-    <script>
+<script>
     $(document).ready(function(){
         Swal.fire({
-            position: 'top',
-            title: 'Ops !',
-            html: '<ul>{!! $error !!}</ul>',
-            icon: 'error',
+            position: "top",
+            title: "ops!",
+            html: `@php echo $error @endphp`,
+            icon: "error",
             toast: true,
-            showConfirmButton: false,
+            showConfirmButton: true,
             timer: 5000
         })
-    })
-    </script>
-
-
+    });   
+</script>
 @endif
+
 @endsection

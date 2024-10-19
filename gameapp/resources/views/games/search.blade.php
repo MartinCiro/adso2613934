@@ -1,33 +1,30 @@
-@forelse ($users as $user)
-    
-
+@forelse ($games as $game)
 <article class="record">
     <figure class="avatar">
-        <img class="mask" src="{{ asset('images') . '/' . $user->photo }}" alt="Photo">
-        <img class="border" src="../images/shape-border-small.svg" alt="Border">
+        <img class="mask" src="{{ asset('images') . '/' . $game->image }}" alt="image">
+        <img class="border" src="{{ asset('images/shape-border-small.svg') }}" alt="Border">
     </figure>
     <aside>
-        <h3>{{ $user->fullname }}</h3>
-        <h4>{{ $user->role }}</h4>
+        <h3>{{ $game->title }}</h3>
+        <h4>{{ $game->developer }}</h4>
     </aside>
     <figure class="actions">
-        <a href="{{ url('users/' . $user->id) }}">
-            <img src="{{ asset('images/ico-search.svg') }}" alt="Show">
+        <a href="{{ url('games/' . $game->id) }}">
+            <img src="../images/ico-search.svg" alt="Show">
         </a>
-        <a href="{{ url('users/' . $user->id . '/edit') }}">
-            <img src="{{ asset('images/ico-edit.svg') }}" alt="Edit">
+        <a href="{{ url('games/' . $game->id . '/edit') }}">
+            <img src="../images/ico-edit.svg" alt="Edit">
         </a>
-
-
-        <a href="javascript:;" class="delete" data-fullname="{{ $user->fullname }}">
+        <a href="javascript:;" class="delete" data-fullname="{{ $game->title }}">
             <img src="{{ asset('images/ico-trash.svg') }}" alt="Delete">
         </a>
-        <form action="{{ url('users/' . $user->id) }}" method="POST" style="display: none">
+        <form action="{{ url('games/' . $game->id) }}" method="POST" style="display: none">
             @csrf
-            @method('DELETE')
+            @method('delete')
         </form>
     </figure>
 </article>
+    
 @empty
-    No found
+    no found 😒
 @endforelse

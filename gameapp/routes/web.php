@@ -9,17 +9,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/games/', function(){
+Route::get('/myprofile', function(){
+    return view('profile');
+});
+
+Route::get('/games', function(){
     $games = App\Models\Game::all();
     return view('listgames')->with('games', $games);
 });
 
-Route::get('/dashboard', function(){
+Route::get('/dashboard', function() {
     $games = App\Models\Game::all();
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard', function() {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -38,8 +42,6 @@ Route::get('catalogue', function(){
     return view('catalogue');
 });
 
-Route::get('categories', [CategoryController::class, 'index']);
-
 Route::get('/game/show/{id}', function($id){
     $game = App\Models\Game::find($id);
     dd($game->toArray());
@@ -50,9 +52,7 @@ Route::get('/game/show/{id}', function(){
     dd($game->toArray());
 });
 
-Route::get('/myprofile', function(){
-    return view('profile');
-});
+Route::get('categories', [CategoryController::class, 'index']);
 
 Route::get('/viewusers', function(){
     $viewusers = App\Models\User::limit(20)->get();
@@ -73,19 +73,15 @@ Route::get('/viewusers', function(){
     return $code . "</table>";
 });
 
-Route::post('/user/create', function(){
-    $game = App\Models\Game::find(request()->id);
-    dd($game->toArray());
-});
-
 //search
 Route::post('users/search', [UserController::class, 'search']);
-
-//search
 Route::post('categories/search', [CategoryController::class, 'search']);
+Route::post('games/search', [GameController::class, 'search']);
 
-//Export
+//Exports
 Route::get('export/users/pdf', [UserController::class, 'pdf']);
 Route::get('export/users/excel', [UserController::class, 'excel']);
+Route::get('export/games/pdf', [GameController::class, 'pdf']);
+Route::get('export/games/excel', [GameController::class, 'excel']);
 
 require __DIR__.'/auth.php';

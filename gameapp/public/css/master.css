@@ -598,7 +598,7 @@ main.view-game {
 main.login,
 main.register {
     header {
-        width: max-content;
+        /* width: max-content; */
 
         .btn-back {
             visibility: hidden;
@@ -768,8 +768,6 @@ main.register {
         }
     }
 }
-
-main.nav {}
 
 /* - - - - - - - - - - - - - - - - - - - - */
 /* 01 - D A S H B O A R D*/

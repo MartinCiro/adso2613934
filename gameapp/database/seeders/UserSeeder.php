@@ -28,12 +28,12 @@ class UserSeeder extends Seeder
 
         $user = new User;
         $user->document = 75000002;
-        $user->fullname = 'Dahiana Rave';
-        $user->gender = 'Female';
+        $user->fullname = 'Martin';
+        $user->gender = 'Male';
         $user->birthdate = '1996-03-26';
-        $user->phone = '3147348431';
-        $user->email = 'dahianarave18@gmail.com';
-        $user->password = bcrypt('admin');
+        $user->phone = '312645457';
+        $user->email = 'martin@gmail.com';
+        $user->password = bcrypt('ciro');
         $user->role = 'Administrator';
         $user->save();
 

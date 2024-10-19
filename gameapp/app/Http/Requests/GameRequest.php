@@ -23,39 +23,27 @@ class GameRequest extends FormRequest
     {
         if ($this->method() === 'PUT') {
             return [
-                'title' => 'required|string'.$this->id,
-                'manufacturer' => 'required|string',
+                'title' => 'required|string|unique:games,title,'. $this->id,
+                'developer' => 'required|string',
                 'releasedate' => 'required|date',
-                'description' => 'required|string',
-
+                'category_id' => 'required',
+                'price' => 'required|numeric|regex:/^\d+(\.\d{2})?$/',
+                'genre' => 'required',
+                'slider' => 'required',
+                'description' => 'required',
             ];
         } else {
             return [
-                'name' => ['required', 'string', 'unique:'.Category::class],
-                'image' => ['required', 'image'],
-                'manufacturer' => ['required', 'string'],
-                'releasedate' => ['required', 'date'],
-                'description' => ['required', 'string']
+                'title' => 'required|string|unique:games',
+                'image' => 'required|image',
+                'developer' => 'required|string',
+                'releasedate' => 'required|date',
+                'category_id' => 'required',
+                'price' => 'required|numeric|regex:/^\d+(\.\d{2})?$/',
+                'genre' => 'required',
+                'slider' => 'required',
+                'description' => 'required',
             ];
         }
     }
-    
-    public function messages(): array
-    {
-        return [
-            'name.required' => 'El campo de nombre es obligatorio',
-            'name.unique' => 'El campo de nombre ya existe',
-            'manufacturer.required' => 'El campo de manufacturer es obligatorio',
-            'manufacturer.unique' => 'El campo de manufacturer ya existe'
-        ];
-    }
-
-    public function attributes(): array
-    {
-        return [
-            'name' => 'nombre categoria',
-            'manufacturer' => 'nombre creador'
-        ];
-    }
-
 }

@@ -1,105 +1,73 @@
 @extends('layouts.app')
-@section('title', 'GameApp - My-Profile')
-@section('class', 'myprofile')
+@section('title', 'GameApp - Catalogue')
+@section('class', 'my-profile')
 
 @section('content')
-<header>
-    <a href="{{ url('/') }}" class="btn-back">
-        <img src="images/btn-back.svg" alt="Back">
-    </a>
-    <img src="images/title-dashboard.svg" alt="Logo" class="logo-top">
-    <svg class="btn-burger" viewBox="0 0 100 100" width="80">
-        <path class="line top"
-            d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
-        <path class="line middle" d="m 70,50 h -40" />
-        <path class="line bottom"
-            d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
-    </svg>
-</header>
-@include('layouts.menuburger')
-<section>
-    <div class="myprofile">
-        <div class="img">
-            <img id="upload" class="mask" src="{{ asset('images') . '/' . Auth::user()->photo }}" height="160px" alt="Photo">
-            <img class="border" src="images/shape-border-photo.svg" alt="Border">
-        </div>
-        <div class="nombre-email">
-            <p>
-                {{ Auth::user()->fullname }}
-            </p>
-            <h4>
-                {{ Auth::user()->email }}
-            </h4>
-        </div>
-        <div class="ico-admin-profile">
-            <img src="images/ico-profile.svg" alt="Login">
-            <h1 color=black> {{ Auth::user()->role }} </h1>
-            {{-- <img src="images/ico-admin-profile.svg" alt="Login"> --}}
-        </div>
-        <div class="datos">
-            <div class="cedula">
-                <img src="images/ico-profile.svg" alt="Login">
-                <h1>
-                    {{ Auth::user()->document }}
-                </h1>
+    <header>
+        <img src="images/logo-dashboard.png" alt="">
+        <svg class="btn-burger" viewBox="0 0 100 100" width="80">
+            <path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
+            <path class="line middle" d="m 70,50 h -40" />
+            <path class="line bottom"
+                d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
+        </svg>
+    </header>
+    @include('menuburger')
+    <section>
+    <figure class="avatar">          
+            <img class="mask" src="{{asset ('images') . '/' . Auth::user()->photo }}" alt="Photo">
+            <img class="border" src="images/borde2.svg" alt="border">
+        </figure>
+        <h2>{{ Auth::user()->fullname }}</h2>
+        <span class="email"><b>{{ Auth::user()->email }}</b></span>
+        <span class="role">
+        <img src="images/ico-role.svg" alt="role">
+        <h4>{{ Auth::user()->role }}</h4>
+        </span>
+        <div class="grid">
+                <span class="data data-id">
+                <img src="images/ico-data-id.svg" alt="Id">
+                <b>{{ Auth::user()->document }}</b>
+                </span>
+                <span class="data data-address">
+                    <img src="images/ico-data-address.svg" alt="Address">
+                    <b>N/A</b>
+                </span>
+                <span class="data data-phone-number">
+                    <img src="images/ico-data-phone-number.svg" alt="Phone Number">
+                    <b>{{ Auth::user()->phone }}</b>
+                </span>
+                <span class="data data-birth-date">
+                    <img src="images/data-birth-date.svg" alt="Birth Date">
+                    <b>{{ Auth::user()->birthdate }}</b>
+                </span>
+                <span class="data data-gender">
+                    <img src="images/ico-data-gender.svg" alt="Gender">
+                    <b>{{ Auth::user()->gender }}</b>
+                </span>
+                <span class="data data-status">
+                    <img src="images/ico-data-status.svg" alt="Status">
+                    <b>Active</b>
+                </span>
             </div>
-            <div class="telefono">
-                <img src="images/ico-profile.svg" alt="Login">
-                <h1>
-                    {{ Auth::user()->phone }}
-                </h1>
-            </div>
-            <div class="estado">
-                <img src="images/ico-profile.svg" alt="Login">
-                <h1>
-                    ACTIVE
-                </h1>
-            </div>
-            <div class="sexo">
-                <img src="images/ico-profile.svg" alt="Login">
-                <h1>
-                    {{ Auth::user()->gender }}
-                </h1>
-            </div>
-            <div class="fecha-nac">
-                <img src="images/ico-profile.svg" alt="Login">
-                <h1>
-                    {{ Auth::user()->birthdate }}
-                </h1>
-            </div>
-            <div class="direccion">
-                <img src="images/ico-profile.svg" alt="Login">
-                <h1>
-                    STR 23-45
-                </h1>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 @endsection
-
 @section('js')
     <script>
-  
-        //-------------------------------------------------
-        $('header').on('click','.btn-burger', function(){
-            $(this).toggleClass('active')
-            $('.nav').toggleClass('active')
-        });
-        //-------------------------------------------------
-            //este sirve para el ojito de la contraseña
-        //-------------------------------------------------
-        $togglePass = false
-        $('section').on('click','.ico-eye', function(){
+        $(document).ready(function() {
+            $('header').on('click', '.btn-burger', function() {
+                $(this).toggleClass('active')
+                $('.nav').toggleClass('active')
+            })
 
-            !$togglePass ? $(this).next().attr('type', 'text')
-                         : $(this).next().attr('type', 'password')
-
-            !$togglePass ? $(this).attr('src', 'images/ico-eye-close.svg')
-                         : $(this).attr('src', 'images/ico-eye.svg')
-            
-            $togglePass = !$togglePass     
-        });
-        //--------------------------------------------
+            // $togglePass = false
+            // $('section').on('click', '.ico-eye', function() {
+            //     !$togglePass ? $(this).next().attr('type', 'text') :
+            //         $(this).next().attr('type', 'password') !$togglePass ? $(this).attr('src',
+            //             'images/ico-eye-hidden.svg') :
+            //         $(this).attr('src', 'images/ico-eye.svg')
+            //     $togglePass = !$togglePass
+            // })
+        })
     </script>
 @endsection

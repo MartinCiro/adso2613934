@@ -1,12 +1,13 @@
-@extends('layouts.app')
-@section('title', 'GameApp - Create User')
-@section('class', 'add register addUsers')
+@extends ('layouts.app')
+@section('tittle','GameApp- Create Game')
+@section('class','my-profile register')
+
 
 @section('content')
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <header>
-    <a href="javascript:;" class="btn-back">
-        <img src="{{asset('images/btn-back.svg')}}" alt="Back">
+    <a href="{{ url('games') }}" class="btn-back">
+        <img src="{{ asset('images/btn-back.svg')}}" alt="Back">
     </a>
     <h1>Add</h1>
     <svg class="btn-burger" viewBox="0 0 100 100" width="80">
@@ -22,75 +23,81 @@
     </svg>
 </header>
 @include('menuburger')
+
 <section class="scroll">
-    <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('games.store') }}" method="POST" enctype="multipart/form-data">        
         @csrf
         <div class="form-group">
-            <img id="upload" class="mask" src="{{asset('images/bg-upload-photo.svg')}}" alt="photo">
-            <img class="border" src="{{asset('images/borde.svg')}}" alt="border">
-            <input id="photo" type="file" name="photo" accept="image/*">
+            <img id="upload" class="mask" src="{{ asset ('images/bg-upload-photo.svg') }}" alt="image">
+            <img class="border" src="{{ asset ('images/borde.svg') }}" alt="border">
+            <input id="photo" type="file" name="image" accept="image/*">
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-document.svg')}}" alt="document">
-                Document:
+                <img src="{{ asset ('images/ico-name-categories.svg') }}" alt="document">
+                Title:
             </label>
-            <input type="text" name="document" placeholder="12323456" value="{{old('document')}}">
+            <input type="text" name="title" placeholder="The Legend of Zelda" value="{{old('title')}}">
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-name.svg')}}" alt="document">
-                Fullname:
+                <img src="{{ asset ('images/ico-name.svg') }}" alt="document">
+                Developer:
             </label>
-            <input type="text" name="fullname" placeholder="Rosa Perez" value="{{old('fullname')}}">
+            <input type="text" name="developer" placeholder="Rosa Perez" value="{{old('developer')}}">
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-gender.svg')}}" alt="gender">
-                Gender:
+                <img src="{{ asset ('images/ico-category2.svg') }}" alt="document">
+                Category:
             </label>
-            <input type="text" name="gender" placeholder="Female" value="{{old('gender')}}">
+            <select name="category_id">
+                <option value="">Select...</option>
+                @foreach ($cats as $cat)
+                <option value="{{ $cat->id }}" @if(old('category_id') == $cat->id) selected @endif>{{ $cat->name }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-email-register')}}.svg" alt="Email">
-                Email:
+                <img src="{{ asset ('images/ico-gender.svg') }}" alt="releasedate">
+                releasedate:
             </label>
-            <input type="email" name="email" value="{{old('email')}}" placeholder="dirlortr@gmail.com">
+            <input type="date" name="releasedate" placeholder="14-09-2024" value="{{old('releasedate')}}">
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-phone.svg')}}" alt="phone">
-                Phone Number:
+                <img src="{{ asset ('images/ico-email-register.svg') }}" alt="Email">
+                Price:
             </label>
-            <input type="text" value="{{old('phone')}}" name="phone" placeholder="320XXXXXXXX">
+            <input type="text" name="price" value="{{old('price')}}" placeholder="$5000">
         </div>
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-birthday.svg')}}" alt="text">
-                Birth Date:
+                <img src="{{ asset ('images/ico-phone.svg') }}" alt="phone">
+                Genre:
             </label>
-            <input type="text" value="{{old('birthdate')}}" name="birthdate" placeholder="1980-10-10">
-        </div>
+            <input type="text" value="{{old('genre')}}" name="genre" placeholder="genre">
+        </div>                       
         <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-password-register.svg')}}" alt="password">
-                Password:
+                <img src="{{ asset ('images/ico-description.svg') }}" alt="text">
+                Description:
             </label>
-            <img class="ico-eye" src="{{asset('images/ico-eye-open.svg')}}" alt=" ">
-            <input type="password" name="password" placeholder="dontmesswithmydog">
-        </div>
-        <div class="form-group">
+            <input type="text" value="{{old('description')}}" name="description" placeholder="lorem 5">
+        </div>        <div class="form-group">
             <label>
-                <img src="{{asset('images/ico-password-register.svg')}}" alt="password">
-                Confirm Password:
+                Slider:
             </label>
-            <img class="ico-eye" src="{{asset('images/ico-eye-open.svg')}}" alt=" ">
-            <input type="password" name="password_confirmation" placeholder="dontmesswithmydog">
+            <select name="slider">
+                <option value="">Select...</option>
+                <option value="0" @if (old('slider') == 1) selected @endif>Inactive</option>
+                <option value="1" @if (old('slider') == 0) selected @endif>Active</option>
+            </select>
         </div>
         <div class="form-group">
             <button type="submit">
-                <img src="{{asset('images/content-btn-register.svg')}}" alt="login">
+                <img src="{{ asset ('images/content-btn-add.svg') }}" alt="add">
             </button>
         </div>
     </form>
@@ -104,17 +111,6 @@
         $('header').on('click', '.btn-burger', function(){
         $(this).toggleClass('active')
         $('.nav').toggleClass('active')
-
-        @if (session('message'))
-            Swal.fire({
-                position: 'top',
-                icon: 'success',
-                title: '{{ session('message') }}',
-                toast: true,
-                timer: 5000
-            })
-        @endif
-        
     })
     //----------------------------
     $togglePass = false
@@ -122,8 +118,8 @@
         !$togglePass ? $(this).next().attr('type', 'text')
                     : $(this).next().attr('type', 'password')
 
-        !$togglePass ? $(this).attr('src', "{{ asset('images/ico-eye-hidden.svg') }}")
-                    : $(this).attr('src', "{{ asset('images/ico-eye-open.svg') }}")
+        !$togglePass ? $(this).attr('src', "{{ asset ('images/ico-eye.svg')}}")
+                    : $(this).attr('src', "{{asset('images/ico-eye-open.svg') }}")
 
         $togglePass = !$togglePass
 
@@ -143,28 +139,25 @@
      //----------------------------
     })
 </script>
-    
-
-@if ($errors->any())
-    @php $error = '' @endphp
-    @foreach ($errors->all() as $message)
+@if (count($errors->all()) > 0)
+@php $error = '' @endphp
+@foreach ($errors->all() as $message)
         @php $error .= '<li>' . $message . '</li>' @endphp
-    @endforeach
+@endforeach
 
-    <script>
+<script>
     $(document).ready(function(){
         Swal.fire({
-            position: 'top',
-            title: 'Ops !',
-            html: '<ul>{!! $error !!}</ul>',
-            icon: 'error',
+            position: "top",
+            title: "ops!",
+            html: `@php echo $error @endphp`,
+            icon: "error",
             toast: true,
-            showConfirmButton: false,
+            showConfirmButton: true,
             timer: 5000
         })
-    })
-    </script>
-
-
+    });   
+</script>
 @endif
+
 @endsection

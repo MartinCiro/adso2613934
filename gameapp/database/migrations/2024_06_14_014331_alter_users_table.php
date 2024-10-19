@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->renameColumn('name', 'fullname');
-            $table->string('gender')->after('name');
+            if (Schema::hasColumn('users', 'name')) {
+                $table->renameColumn('name', 'fullname');
+            }
+            $table->string('gender')->after('fullname');
             $table->string('role')->default('Customer')->after('password');
         });
     }

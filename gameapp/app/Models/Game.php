@@ -45,4 +45,16 @@ class Game extends Model
    {
        return $this->belongsTo('App\Models\Collection');
    }
+
+    public function scopeNames($query, $q)
+    {
+        if (trim($q)) {
+            $q = strtolower($q); // Convertir la búsqueda a minúsculas
+            $query->whereRaw('LOWER(title) LIKE ?', ["%$q%"])
+                ->orWhereRaw('LOWER(developer) LIKE ?', ["%$q%"])
+                ->orWhereRaw('LOWER(genre) LIKE ?', ["%$q%"])
+                ->orWhereRaw('LOWER(slider) LIKE ?', ["%$q%"])
+                ->orWhereRaw('LOWER(description) LIKE ?', ["%$q%"]);
+        }
+    }
 }

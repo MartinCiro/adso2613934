@@ -1,52 +1,17 @@
 version: '3.8'
 
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - .:/var/www/html
-    environment:
-      - DB_CONNECTION=pgsql
-      - DB_HOST=db
-      - DB_PORT=5432
-      - DB_DATABASE=gameapp
-      - DB_USERNAME=postgres
-      - DB_PASSWORD=ciro
-    networks:
-      - app-network
-    expose:
-      - "9000"
-
-  web:
-    image: php:8.0-apache
-    volumes:
-      - .:/var/www/html
-      - ./apache-config.sh:/apache-config.sh
-    ports:
-      - "8080:80"
-    networks:
-      - app-network
-    depends_on:
-      - app
-    environment:
-      - APACHE_DOCUMENT_ROOT=/var/www/html/public
-    command: /apache-config.sh
-
-  db:
-    image: postgres:13
+  psql:
+    image: postgres:latest
+    container_name: psql
     environment:
       POSTGRES_DB: gameapp
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ciro
+    ports:
+      - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
-    networks:
-      - app-network
+      - pg_data:/var/lib/postgresql/data
 
 volumes:
-  pgdata:
-
-networks:
-  app-network:
+  pg_data:
